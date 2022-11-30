@@ -28,6 +28,12 @@ pipeline {
             }
         }
 
+        stage('Tag docker image') {
+            steps {
+                sh 'docker image tag spring-webapp mmadrigal/spring-webapp:latest'
+            }
+        }
+
         stage('Upload docker image') {
             steps {
                 withCredentials([string(credentialsId: 'dockerpwd-id', variable: 'dockerpwd')]) {
