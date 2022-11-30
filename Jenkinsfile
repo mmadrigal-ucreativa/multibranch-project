@@ -30,8 +30,8 @@ pipeline {
 
         stage('Upload docker image') {
             steps {
-                withCredentials([string(credentialsId: 'docker-pwd-id', variable: 'docker-pwd')]) {
-                    sh 'docker login -u mmadrigal -p ${docker-pwd}'
+                withCredentials([string(credentialsId: 'docker-cred', variable: 'docker-credentials')]) {
+                    sh 'docker login -u mmadrigal -p ${docker-credentials}'
                     sh 'docker image push mmadrigal/spring-webapp:latest'
                 }
             }
