@@ -21,5 +21,11 @@ pipeline {
                 }
             }
         }
+
+        stage('Build docker image') {
+            steps {
+                sh 'docker image build -t spring-webapp .'
+            }
+        }
     }
 }
