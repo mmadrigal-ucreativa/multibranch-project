@@ -1,8 +1,7 @@
 pipeline {
     agent {
         label 'worker-dev'
-    }
-    
+    }    
 
     stages {
 
