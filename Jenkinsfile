@@ -11,6 +11,12 @@ pipeline {
             }
         }
 
+        stage('Paso de prueba') {
+            steps {
+               echo '$TAG_NAME'
+            }
+        }
+
         stage('Unit test') {
             steps {
                 sh 'mvn test'
