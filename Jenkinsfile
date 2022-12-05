@@ -4,19 +4,18 @@ pipeline {
         label 'worker-linux'
     }
 
-    environment {
-
-        //Use Pipeline Utility Steps plugin to read information from pom.xml into env variables
-        TAG_VERSION = readMavenPom().getProperties().getProperty('version.number')
-
-        }
-    
     stages {
 
         stage('Compilacion') {
             steps {
                sh 'mvn -DskipTests clean install package'
-               echo "My tag is ${TAG_VERSION}"
+
+
+               script {
+                    def tag_version = sh script: 'mvn help:evaluate -Dexpression=version.number -q -DforceStdout', returnStdout: true
+               }
+
+               echo "My tag is ${tag_version}"
             }
         }
 
