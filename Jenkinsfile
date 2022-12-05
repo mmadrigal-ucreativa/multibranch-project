@@ -23,25 +23,11 @@ pipeline {
             }
         }
 
-        stage('Build docker image') {
+        stage('Procesos docker - Build Tag y Push') {
             steps {
-                sh 'docker image build -t spring-webapp .'
+                sh 'mvn compile jib:build'
             }
         }
 
-        stage('Tag docker image') {
-            steps {
-                sh 'docker image tag spring-webapp mmadrigal/spring-webapp:latest'
-            }
-        }
-
-        stage('Upload docker image') {
-            steps {
-                withCredentials([string(credentialsId: 'dockerpwd-id', variable: 'dockerpwd')]) {
-                    sh 'docker login -u mmadrigal -p ${dockerpwd}'
-                    sh 'docker image push mmadrigal/spring-webapp:latest'
-                }
-            }
-        }
     }
 }
