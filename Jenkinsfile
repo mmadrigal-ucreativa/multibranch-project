@@ -1,3 +1,5 @@
+def tag_name = "foo"
+
 pipeline {
     agent {
         label 'worker-linux'
@@ -7,13 +9,13 @@ pipeline {
 
         stage('Compilacion') {
             steps {
-               sh 'mvn -DskipTests clean install package'
+               sh 'mvn -Dtag_name=value -DskipTests clean install package'
             }
         }
 
         stage('Paso de prueba') {
             steps {
-               echo '${env.TAG_NAME}'
+               echo '${tag_name}'
             }
         }
 
