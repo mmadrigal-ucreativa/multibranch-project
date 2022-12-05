@@ -1,4 +1,4 @@
-def props = readProperties defaults: d, file: '/multibranch-project/logs/log-ant-run.properties'
+def props = readProperties file: '/multibranch-project/logs/log-ant-run.properties'
 pipeline {
 
     agent {
