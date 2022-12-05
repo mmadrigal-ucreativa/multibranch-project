@@ -1,3 +1,4 @@
+node {
 def props = readProperties file: '/multibranch-project/logs/log-ant-run.properties'
 pipeline {
 
@@ -5,14 +6,14 @@ pipeline {
         label 'worker-linux'
     }
 
-
+    environment {
+        //Use Pipeline Utility Steps plugin to read information from pom.xml into env variables
+        TAG_VERSION = "${props['tag.version']}"
+    }
 
     stages {
         stage('Compilacion') {
-            environment {
-                //Use Pipeline Utility Steps plugin to read information from pom.xml into env variables
-                TAG_VERSION = "${props['tag.version']}"
-            }
+
 
             steps {
                sh 'mvn -DskipTests clean install package'
@@ -39,4 +40,5 @@ pipeline {
         
 
     }
+}
 }
