@@ -28,6 +28,7 @@ pipeline {
                 sh 'mvn compile jib:build'
             }
         }
+        
 
     }
 }
