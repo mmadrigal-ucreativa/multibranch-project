@@ -4,19 +4,18 @@ pipeline {
         label 'worker-linux'
     }
 
-//     environment {
-//         def pom = readMavenPom '/multibranch-project/pom.xml'
-//         //Use Pipeline Utility Steps plugin to read information from pom.xml into env variables
-//         TAG_VERSION = pom.properties['com.example.servingwebcontet.version-number']
-//
-//         }
+    environment {
+        //Use Pipeline Utility Steps plugin to read information from pom.xml into env variables
+        TAG_VERSION = readMavenPom().version.number
+
+        }
     
     stages {
 
         stage('Compilacion') {
             steps {
                sh 'mvn -DskipTests clean install package'
-//                echo "My tag is ${TAG_VERSION}"
+               echo "My tag is ${TAG_VERSION}"
             }
         }
 
