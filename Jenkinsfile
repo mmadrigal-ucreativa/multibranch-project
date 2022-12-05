@@ -1,4 +1,4 @@
-def props = readProperties defaults: d, file: '/multibranch-project/logs/log-ant-run.properties', text: 'other=Override'
+
 pipeline {
 
     agent {
@@ -6,10 +6,10 @@ pipeline {
     }
 
     environment {
+        def props = readProperties defaults: d, file: '/multibranch-project/logs/log-ant-run.properties', text: 'other=Override'
         //Use Pipeline Utility Steps plugin to read information from pom.xml into env variables
         TAG_VERSION = props['tag.version']
-
-        }
+    }
 
     stages {
 
