@@ -13,9 +13,10 @@ pipeline {
 
                script {
                     def tag_version = sh script: 'mvn help:evaluate -Dexpression=version.number -q -DforceStdout', returnStdout: true
+                    echo "My tag is ${tag_version}"
                }
 
-               echo "My tag is ${tag_version}"
+
             }
         }
 
