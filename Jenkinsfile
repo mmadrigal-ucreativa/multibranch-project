@@ -5,15 +5,16 @@ pipeline {
         label 'worker-linux'
     }
 
+
+
     stages {
+        environment {
+            //Use Pipeline Utility Steps plugin to read information from pom.xml into env variables
+            TAG_VERSION = "${props['tag.version']}"
+        }
 
         stage('Compilacion') {
             steps {
-            environment {
-
-                    //Use Pipeline Utility Steps plugin to read information from pom.xml into env variables
-                    TAG_VERSION = "${props['tag.version']}"
-                }
                sh 'mvn -DskipTests clean install package'
                echo "My tag is ${TAG_VERSION}"
             }
