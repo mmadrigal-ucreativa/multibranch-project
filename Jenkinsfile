@@ -8,7 +8,7 @@ def tag = "foo"
 
         stage('Compilacion') {
             steps {
-               sh 'mvn -Dtag_name=value -DskipTests clean install package'
+               sh 'mvn -Dtag=value -DskipTests clean install package'
                echo 'My tag is ${tag}'
             }
         }
