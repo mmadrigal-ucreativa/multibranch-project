@@ -13,7 +13,7 @@ pipeline {
 
         stage('Paso de prueba') {
             steps {
-               echo '$TAG_NAME'
+               echo '$env.TAG_NAME'
             }
         }
 
