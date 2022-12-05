@@ -6,7 +6,7 @@ pipeline {
 
     environment {
         //Use Pipeline Utility Steps plugin to read information from pom.xml into env variables
-        TAG_VERSION = readMavenPom().version.number
+        TAG_VERSION = pom.properties['com.example.servingwebcontet.version-number']
 
         }
     
