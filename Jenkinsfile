@@ -10,7 +10,7 @@ pipeline {
     environment {
 
         //Use Pipeline Utility Steps plugin to read information from pom.xml into env variables
-        TAG_VERSION = props['tag.version']
+        TAG_VERSION = ${props['tag.version']}
     }
 
     stages {
