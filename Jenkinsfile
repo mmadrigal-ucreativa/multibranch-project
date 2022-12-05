@@ -1,4 +1,3 @@
-node {
 def props = readProperties file: '/multibranch-project/logs/log-ant-run.properties'
 pipeline {
 
@@ -17,7 +16,9 @@ pipeline {
 
             steps {
                sh 'mvn -DskipTests clean install package'
-               echo "My tag is ${TAG_VERSION}"
+               script {
+                echo "My tag is ${TAG_VERSION}"
+               }
             }
         }
 
@@ -40,5 +41,4 @@ pipeline {
         
 
     }
-}
 }
