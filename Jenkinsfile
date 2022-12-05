@@ -5,7 +5,7 @@ pipeline {
     }
 
     environment {
-        pom = readMavenPom '/multibranch-project/pom.xml'
+        def pom = readMavenPom '/multibranch-project/pom.xml'
         //Use Pipeline Utility Steps plugin to read information from pom.xml into env variables
         TAG_VERSION = pom.properties['com.example.servingwebcontet.version-number']
 
