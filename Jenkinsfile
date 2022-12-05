@@ -3,7 +3,6 @@ pipeline {
         label 'worker-linux'
     } 
     
-
     stages {
 
         stage('Compilacion') {
