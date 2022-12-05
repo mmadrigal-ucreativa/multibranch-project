@@ -18,7 +18,6 @@
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <version.number>${git.commit.id.abbrev}</version.number>
-        <tag_name>${version.number}</tag_name>
         <docker.repository.name>mmadrigal/${project.artifactId}</docker.repository.name>
     </properties>
 
@@ -93,15 +92,15 @@
                 </configuration>
             </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <environmentVariables>
-                        <tag_name>${version.number}</tag_name>
-                    </environmentVariables>
-                </configuration>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-surefire-plugin</artifactId>-->
+<!--                <configuration>-->
+<!--                    <environmentVariables>-->
+<!--                        <tag>${version.number}</tag>-->
+<!--                    </environmentVariables>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
 
         </plugins>
         <finalName>service</finalName>
