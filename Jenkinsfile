@@ -14,7 +14,7 @@ pipeline {
 
         stage('Compilacion') {
             steps {
-               sh 'mvn -Dtag=value -DskipTests clean install package'
+               sh 'mvn -DskipTests clean install package'
                echo 'My tag is ${VERSION_NUMBER}'
             }
         }
