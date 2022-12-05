@@ -102,9 +102,33 @@
 <!--                </configuration>-->
 <!--            </plugin>-->
 
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>antrun-plugin</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <delete>
+                                    <fileset dir="${basedir}/logs" includes="*.properties" />
+                                </delete>
+                                <echo file="${basedir}/logs/log-ant-run.properties" append="true"
+                                      message="tag.version=${version.number}" />
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
         <finalName>service</finalName>
     </build>
+
 
 
 </project>

@@ -1,22 +1,22 @@
+def props = readProperties defaults: d, file: '/multibranch-project/logs/log-ant-run.properties', text: 'other=Override'
 pipeline {
 
     agent {
         label 'worker-linux'
     }
 
+    environment {
+        //Use Pipeline Utility Steps plugin to read information from pom.xml into env variables
+        TAG_VERSION = props['tag.version']
+
+        }
+
     stages {
 
         stage('Compilacion') {
             steps {
                sh 'mvn -DskipTests clean install package'
-
-
-               script {
-                    def tag_version = sh script: 'mvn help:evaluate -Dexpression=version.number -q -DforceStdout', returnStdout: true
-                    echo "My tag is ${tag_version}"
-               }
-
-
+               echo "My tag is ${TAG_VERSION}"
             }
         }
 
