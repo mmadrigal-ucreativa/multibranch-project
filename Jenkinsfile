@@ -5,8 +5,10 @@ pipeline {
         label 'worker-linux'
     }
 
+    def props = readProperties defaults: d, file: '/multibranch-project/logs/log-ant-run.properties'
+
     environment {
-        def props = readProperties defaults: d, file: '/multibranch-project/logs/log-ant-run.properties', text: 'other=Override'
+
         //Use Pipeline Utility Steps plugin to read information from pom.xml into env variables
         TAG_VERSION = props['tag.version']
     }
