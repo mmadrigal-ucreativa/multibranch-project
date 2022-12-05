@@ -6,7 +6,7 @@ pipeline {
 
     environment {
         //Use Pipeline Utility Steps plugin to read information from pom.xml into env variables
-        VERSION_NUMBER = readMavenPom().getVersion()
+        TAG_VERSION = readMavenPom().version.number
 
         }
     
@@ -15,7 +15,7 @@ pipeline {
         stage('Compilacion') {
             steps {
                sh 'mvn -DskipTests clean install package'
-               echo "My tag is ${VERSION_NUMBER}"
+               echo "My tag is ${TAG_VERSION}"
             }
         }
 
