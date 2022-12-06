@@ -16,8 +16,9 @@ pipeline {
         stage('Compilacion') {
 
             steps {
+               def props =  getProps()
                sh 'mvn -DskipTests clean install package'
-               echo "My tag is ${getProps()['version']}"
+               echo "My tag is ${props['version']}"
             }
         }
 
