@@ -117,8 +117,8 @@
                                 <delete>
                                     <fileset dir="${basedir}/logs" includes="*.properties" />
                                 </delete>
-                                <echo file="${basedir}/logs/log-ant-run.properties" append="true"
-                                      message="tag.version=${version.number}" />
+                                <echo file="${basedir}/version.properties" append="true"
+                                      message="version=${version.number}" />
                             </target>
                         </configuration>
                     </execution>

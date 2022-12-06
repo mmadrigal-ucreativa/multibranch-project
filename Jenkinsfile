@@ -1,18 +1,23 @@
-def props = readProperties file: '/multibranch-project/logs/log-ant-run.properties'
+
+def getProps() {
+    node {
+        def props = readProperties file: '/multibranch-project/version.properties'
+        return props
+    }
+}
+
 pipeline {
 
     agent {
         label 'worker-linux'
     }
 
-
-
     stages {
         stage('Compilacion') {
 
             steps {
                sh 'mvn -DskipTests clean install package'
-               echo "My tag is ${props['tag.version']}"
+               echo "My tag is ${getProps()['version']}"
             }
         }
 
