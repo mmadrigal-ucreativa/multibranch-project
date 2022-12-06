@@ -7,10 +7,15 @@ pipeline {
     stages {
         stage('Compilacion') {
             steps {
-               def props
-               props = readProperties file: '/multibranch-project/versions/version.properties'
                sh 'mvn -DskipTests clean install package'
-               echo "My tag is ${props['version']}"
+
+               script {
+                def props
+                props = readProperties file: '/multibranch-project/versions/version.properties'
+
+                echo "My tag is ${props['version']}"
+               }
+
             }
         }
 
