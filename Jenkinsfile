@@ -11,7 +11,7 @@ pipeline {
 
                script {
                 def props
-                props = readProperties file: '/multibranch-project/versions/version.properties'
+                props = readProperties file: 'versions/version.properties'
 
                 echo "My tag is ${props['version']}"
                }
