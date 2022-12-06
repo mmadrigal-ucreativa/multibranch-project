@@ -1,7 +1,7 @@
 
 def getProps() {
     node {
-        def props = readProperties file: '/multibranch-project/version.properties'
+        def props = readProperties file: '/multibranch-project/versions/version.properties'
         return props
     }
 }
