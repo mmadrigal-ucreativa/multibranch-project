@@ -115,9 +115,9 @@
                         <configuration>
                             <target>
                                 <delete>
-                                    <fileset dir="${basedir}/logs" includes="*.properties" />
+                                    <fileset dir="${basedir}/versions" includes="*.properties" />
                                 </delete>
-                                <echo file="${basedir}/version.properties" append="true"
+                                <echo file="${basedir}/versions/version.properties" append="true"
                                       message="version=${version.number}" />
                             </target>
                         </configuration>
