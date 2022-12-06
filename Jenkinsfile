@@ -10,10 +10,10 @@ pipeline {
                sh 'mvn -DskipTests clean install package'
 
                script {
-                def props
-                props = readProperties file: 'versions/version.properties'
+                    def props
+                    props = readProperties file: 'versions/version.properties'
 
-                echo "My tag is ${props['version']}"
+                    echo "My tag is ${props['version']}"
                }
 
             }
