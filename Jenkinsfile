@@ -28,7 +28,7 @@ pipeline {
             }
         }
 
-        stage('Iniciando QA') {
+        stage('Propagando QA') {
 
             steps {
                 script {
