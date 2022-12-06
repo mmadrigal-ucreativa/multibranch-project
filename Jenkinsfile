@@ -1,10 +1,3 @@
-def getProps() { return {
-        node {
-            def props = readProperties file: '/multibranch-project/versions/version.properties'
-        }
-    }
-}
-
 pipeline {
 
     agent {
@@ -14,7 +7,8 @@ pipeline {
     stages {
         stage('Compilacion') {
             steps {
-                echo "getProps()"
+               def props
+               props = readProperties file: '/multibranch-project/versions/version.properties'
                sh 'mvn -DskipTests clean install package'
                echo "My tag is ${props['version']}"
             }
