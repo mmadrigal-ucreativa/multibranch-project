@@ -14,6 +14,10 @@ pipeline {
                     props = readProperties file: 'versions/version.properties'
 
                     echo "My tag is ${props['version']}"
+
+                    build job: 'multibranch-project-qa', parameters: [
+                                    string(name: 'TAG_VERSION', value: "${props['version']}")
+                                    ]
                }
 
             }
