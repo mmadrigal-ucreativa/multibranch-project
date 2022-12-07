@@ -85,7 +85,7 @@
                 <configuration>
                     <to>
                         <image>${docker.repository.name}</image>
-                        <tags>
+                        <tags> <!-- mmadrigal/serving-web-content:dev-abd123 -->
                             <tag>dev-${version.number}</tag>
                         </tags>
                     </to>
